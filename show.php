@@ -16,13 +16,23 @@ $username='sickel';
                 
                 
         }
+?>
+<form>
+Project: <input type="text" name="project"/>
+<input type="submit" value="View"/>
+</form>
 
+
+<?php
 $table="${prefix}logging";
 $sql="select drag,drp,ts,uuid,username,project,lat,lon,alt,acc,gpstime from $table";
-if($_GET["project"]>""){
-   $sql .= " where project=? ";
-}
+# $sql .= " where project=? ";
+$sql.=" where project = ? ";
 $sql.=" order by id desc";
+$project="";
+if($_GET["project"]>""){
+	$project=$_GET["project"];
+}
 try{
         print('<table><tr>');
 	foreach( array('drag','drop','timestamp','uuid','username','project','lat','lon','alt','acc','gpstime') as $p){
@@ -30,11 +40,8 @@ try{
         }
         print("</tr>");
 	$sqlh = $dbh->prepare($sql);
-	if($_GET["project"]>""){
-		$sqlh->execute(array($_GET["project"]));
-	}else{	
+		$sqlh->execute(array($project));
 		$sqlh->execute();
-	}
         while($row=$sqlh->fetch(PDO::FETCH_NUM)){
 	print("<tr>");
 	foreach($row as $i){
