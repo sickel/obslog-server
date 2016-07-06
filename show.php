@@ -18,15 +18,23 @@ $username='sickel';
         }
 
 $table="${prefix}logging";
+$sql="select drag,drp,ts,uuid,username,project,lat,lon,alt,acc,gpstime from $table";
+if($_GET["project"]>""){
+   $sql .= " where project=? ";
+}
+$sql.=" order by id desc";
 try{
         print('<table><tr>');
 	foreach( array('drag','drop','timestamp','uuid','username','project','lat','lon','alt','acc','gpstime') as $p){
             print ("<th>$p</th>");
         }
         print("</tr>");
-	$sqlh = $dbh->prepare("select drag,drp,ts,uuid,username,project,lat,lon,alt,acc,gpstime from $table 
-order by id desc");
-	$sqlh->execute();
+	$sqlh = $dbh->prepare($sql);
+	if($_GET["project"]>""){
+		$sqlh->execute(array($_GET["project"]));
+	}else{	
+		$sqlh->execute();
+	}
         while($row=$sqlh->fetch(PDO::FETCH_NUM)){
 	print("<tr>");
 	foreach($row as $i){
