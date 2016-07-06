@@ -25,7 +25,11 @@ Project: <input type="text" name="project"/>
 
 <?php
 $table="${prefix}logging";
-$sql="select drag,drp,ts,uuid,username,project,lat,lon,alt,acc,gpstime from $table";
+
+
+
+$sql_ov="select count(id), username from $table where project=? group by username";
+$sql="select drag,drp,ts,username,project,lat,lon,alt,acc,gpstime,uuid from $table";
 # $sql .= " where project=? ";
 $sql.=" where project = ? ";
 $sql.=" order by id desc";
@@ -34,14 +38,22 @@ if($_GET["project"]>""){
 	$project=$_GET["project"];
 }
 try{
+	$sqlh=$dbh->prepare($sql_ov);
+	$sqlh->execute(array($project));
+	print("<table>");
+	while($row=$sqlh->fetch(PDO::FETCH_NUM)){
+		print("<tr><td>${row[1]}</td><td>${row[0]}</td></tr>\n");
+	}
+	print("</table>\n");
         print('<table><tr>');
-	foreach( array('drag','drop','timestamp','uuid','username','project','lat','lon','alt','acc','gpstime') as $p){
+	foreach( array('drag','drop','timestamp','username','project','lat','lon','alt','acc','gpstime','uuid') 
+as $p){
             print ("<th>$p</th>");
         }
         print("</tr>");
 	$sqlh = $dbh->prepare($sql);
-		$sqlh->execute(array($project));
-		$sqlh->execute();
+	$sqlh->execute(array($project));
+	
         while($row=$sqlh->fetch(PDO::FETCH_NUM)){
 	print("<tr>");
 	foreach($row as $i){
