@@ -22,7 +22,7 @@ if($_GET["project"]>""){
 	$project=$_GET["project"];
 }
 
-$tablehead=array('drag','drop','timestamp','username','project','lat','lon','alt','acc','gpstime','uuid');
+$tablehead=array('drag','drop','timestamp','username','project','lat','lon','alt','acc','gpstime','gps age','uuid');
 	
 
 function useroverview($table,$project){
@@ -54,7 +54,7 @@ function htmltablehead($tablehead){
 
 function getobservations($table,$project){
     global $dbh;
-    $sql="select drag,drp,ts,username,project,lat,lon,alt,acc,gpstime,uuid from $table";
+    $sql="select drag,drp,ts,username,project,lat,lon,alt,acc,gpstime,age,uuid from $table";
     $sql.=" where project = ? ";
     $sql.=" order by id desc";
     $data=array();
