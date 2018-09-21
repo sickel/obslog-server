@@ -1,6 +1,6 @@
 <?php
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/../libs/obslog.php';
+require_once '/home/sickel/libs/obslog.php';
 $prefix='obslog_';
 $database='sickel';
 $username='sickel';     
