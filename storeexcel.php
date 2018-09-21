@@ -5,14 +5,21 @@ require_once '../PHP_XLSXWriter/xlsxwriter.class.php';
 
 $rows=getobservations($table,$project);
 
-$xls = new Excel($project);
-foreach ($rows as $num => $row) {
-  $xls->home();
-  $xls->label($row['id']);
-  $xls->right();
-  $xls->label($row['title']);
-  $xls->down();
-}
-ob_start();
-$data = ob_get_clean();
-file_put_contents(__DIR__ .'/report.xls', $data);
+$filename = "$project.xlsx";
+header('Content-disposition: attachment; filename="'.XLSXWriter::sanitize_filename($filename).'"');
+header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+header('Content-Transfer-Encoding: binary');
+header('Cache-Control: must-revalidate');
+header('Pragma: public');
+
+
+
+$writer = new XLSXWriter();
+$writer->setAuthor('Some Author'); 
+foreach($rows as $row)
+        $writer->writeSheetRow('Sheet1', $row);
+$writer->writeToStdOut();
+//$writer->writeToFile('example.xlsx');
+//echo $writer->writeToString();
+exit(0);
+
