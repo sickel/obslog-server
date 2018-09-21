@@ -2,6 +2,8 @@
 
 require_once 'fetchdata.php';
 
+?>
+
 <form>
 Project: <input type="text" name="project"/>
 <input type="submit" value="View"/>
