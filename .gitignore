@@ -1,3 +1,7 @@
+obslog.php
+*.kate-swp
+
+
 # Composer files
 composer.phar
 vendor/
