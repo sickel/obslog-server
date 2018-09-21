@@ -26,6 +26,7 @@ $tablehead=array('drag','drop','timestamp','username','project','lat','lon','alt
 	
 
 function useroverview($table,$project){
+  global $dbh;
   $sql_ov="select count(id), username from $table where project=? group by username";
   $sqlh=$dbh->prepare($sql_ov);
   $sqlh->execute(array($project));
@@ -52,6 +53,7 @@ function htmltablehead($tablehead){
   
 
 function getobservations($table,$project){
+    global $dbh;
     $sql="select drag,drp,ts,username,project,lat,lon,alt,acc,gpstime,uuid from $table";
     $sql.=" where project = ? ";
     $sql.=" order by id desc";
