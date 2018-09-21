@@ -1,7 +1,7 @@
 <?php
 
 require_once 'fetchdata.php';
-require_once '../PHP_XLSXWriter/ExcelWrt.php';
+require_once '../PHP_XLSXWriter/xlsxwriter.class.php';
 
 $rows=getobservations($table,$project);
 
