@@ -1,9 +1,8 @@
 <?php
 
+
 require_once '/home/sickel/libs/obslog.php';
-$prefix='obslog_';
-$database='sickel';
-$username='sickel';     
+ 
         try{
                 $connectstring='mysql:host='.$server.';dbname='.$database;
                 $dbh = new PDO($connectstring, $username, $password);
@@ -72,6 +71,8 @@ catch(Exception $e){
 	$errormsg=$e->getMessage();
 	print ("<p>$errormsg</p>");
 }
+
+print "<p><a href=\"?savexcel=true&project=$project\">Save excel</a></p>";
 
 ?>
 </body>
