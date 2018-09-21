@@ -18,7 +18,7 @@ $writer = new XLSXWriter();
 $writer->setAuthor('Morten Sickel');
 $writer->setDescription("Data collected using obslogger");
 
-$writer->writeSheetRow($tablehead);
+$writer->writeSheetRow('Sheet1',$tablehead);
 foreach($rows as $row)
         $writer->writeSheetRow('Sheet1', $row);
 $writer->writeToStdOut();
