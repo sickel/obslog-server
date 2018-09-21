@@ -21,10 +21,10 @@ $username='sickel';
 
 $table="${prefix}logging";
 try{
-	$sqlh = $dbh->prepare("insert into $table (drag,drp,ts,uuid,username,project,lat,lon,alt,acc,gpstime) 
-values(?,?,?,?,?,?,?,?,?,?,?)");
+	$sqlh = $dbh->prepare("insert into $table (drag,drp,ts,uuid,username,project,lat,lon,alt,acc,gpstime,age) 
+values(?,?,?,?,?,?,?,?,?,?,?,?)");
         $params=array();
-	foreach( array('drag','drop','ts','uuid','username','project','lat','lon','alt','acc','gpstime') as $p){
+	foreach( array('drag','drop','ts','uuid','username','project','lat','lon','alt','acc','gpstime','age') as $p){
 	    $params[]=$_GET[$p];
         }
 	$sqlh->execute($params);

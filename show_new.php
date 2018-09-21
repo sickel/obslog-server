@@ -17,7 +17,7 @@ htmlusertable($data);
 $data=getobservations($table,$project);
 htmltablehead($tablehead);
 htmlobsdata($data);
-print "<p><a href=\"?savexcel=true&project=$project\">Save excel</a></p>";
+print "<p><a href=\"storeexcel.php?project=$project\">Save excel</a></p>";
 ?>
 </body>
 </html>
