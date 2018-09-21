@@ -14,6 +14,9 @@ Project: <input type="text" name="project"/>
 $data=useroverview($table,$project);
 htmlusertable($data);
 
+$data=getobservations($table,$project);
+htmltablehead($tablehead);
+htmlobsdata($data);
 print "<p><a href=\"?savexcel=true&project=$project\">Save excel</a></p>";
 ?>
 </body>

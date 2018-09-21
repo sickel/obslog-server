@@ -2,7 +2,7 @@
 
 
 require_once '/home/sickel/libs/obslog.php';
- 
+
         try{
                 $connectstring='mysql:host='.$server.';dbname='.$database;
                 $dbh = new PDO($connectstring, $username, $password);
