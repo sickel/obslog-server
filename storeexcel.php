@@ -15,7 +15,10 @@ header('Pragma: public');
 
 
 $writer = new XLSXWriter();
-$writer->setAuthor('Some Author'); 
+$writer->setAuthor('Morten Sickel');
+$writer->setDescription("Data collected using obslogger");
+
+$writer->writeSheetRow($tablehead);
 foreach($rows as $row)
         $writer->writeSheetRow('Sheet1', $row);
 $writer->writeToStdOut();
