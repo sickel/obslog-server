@@ -26,7 +26,7 @@ $docNode = $parNode->appendChild($dnode);
 
 foreach($drops as $drp){
   $drop=$drp[0];
-  $dropcol=$colors[$n % $i];
+  $dropcol=$colors[$n % $i++];
   $StyleNode = $dom->createElement('Style');
   $StyleNode->setAttribute('id', $drop.'Style');
   $IconstyleNode = $dom->createElement('IconStyle');
