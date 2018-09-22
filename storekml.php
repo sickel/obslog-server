@@ -46,6 +46,8 @@ foreach($rows as $row){
 }
 
 $kmlOutput = $dom->saveXML();
+header('Content-disposition: attachment; filename="'.$filename.'"');
+
 header('Content-type: application/vnd.google-earth.kml+xml');
 echo $kmlOutput;
 
