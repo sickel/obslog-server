@@ -27,9 +27,9 @@ foreach($rows as $row){
   // Creates an id attribute and assign it the value of id column.
   
   // Create name, and description elements and assigns them the values of the name and address columns from the results.
-  $nameNode = $dom->createElement('name',htmlentities($row['drag']));
+  $nameNode = $dom->createElement('name',htmlentities($row[0]));
   $placeNode->appendChild($nameNode);
-  $descNode = $dom->createElement('description', $row['drop']);
+  $descNode = $dom->createElement('description', $row[1]);
   $placeNode->appendChild($descNode);
   #$styleUrl = $dom->createElement('styleUrl', '#' . $row['type'] . 'Style');
   #$placeNode->appendChild($styleUrl);
@@ -39,7 +39,7 @@ foreach($rows as $row){
   $placeNode->appendChild($pointNode);
 
   // Creates a coordinates element and gives it the value of the lng and lat columns from the results.
-  $coorStr = $row['lon'] . ','  . $row['lat'];
+  $coorStr = $row[6] . ','  . $row[5];
   print($coorStr);
   $coorNode = $dom->createElement('coordinates', $coorStr);
   $pointNode->appendChild($coorNode);
