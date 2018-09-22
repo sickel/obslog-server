@@ -41,7 +41,25 @@ function htmlusertable($data){
 	}
 	print("</table>\n");
     }
-  
+
+function dropset($table,$project){
+  global $dbh;
+  $sql="select distinct drop from $table where project=?";
+  $sqlh=$dbh->prepare($sql);
+  $sqlh->execute(array($project));
+  return($sqlh->fetchAll(PDO::FETCH_NUM));
+}
+
+function dragset($table,$project){
+  global $dbh;
+  $sql="select distinct drag from $table where project=?";
+  $sqlh=$dbh->prepare($sql);
+  $sqlh->execute(array($project));
+  return($sqlh->fetchAll(PDO::FETCH_NUM));
+}
+
+
+
 
 function htmltablehead($tablehead){
 	    print('<table><tr>');

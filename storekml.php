@@ -2,6 +2,12 @@
 // Creates the Document.
 require_once 'fetchdata.php';
 
+$drops=dropset($table,$project);
+$colors=array("blue","grn","ltblu","pink","purple","red","wht","ylw");
+$i=count($colors);
+$i=0;
+$dropcol=array();
+
 $rows=getobservations($table,$project);
 $now=date("_Ymd_His");
 $filename = "$project$now.kml";
@@ -15,6 +21,23 @@ $parNode = $dom->appendChild($node);
 // Creates a KML Document element and append it to the KML element.
 $dnode = $dom->createElement('Document');
 $docNode = $parNode->appendChild($dnode);
+
+// Styles:
+
+foreach($drops as $drop){
+  $dropcol=$colors($n % $i);
+  $StyleNode = $dom->createElement('Style');
+  $StyleNode->setAttribute('id', $drop.'Style');
+  $IconstyleNode = $dom->createElement('IconStyle');
+  $IconstyleNode->setAttribute('id', $drop.'Icon');
+  $IconNode = $dom->createElement('Icon');
+  $Href = $dom->createElement('href', 'http://maps.google.com/mapfiles/kml/pushpin/'.$dropcol.'-pushpin.png');
+  $IconNode->appendChild($Href);
+  $IconstyleNode->appendChild($IconNode);
+  $StyleNode->appendChild($IconstyleNode);
+  $docNode->appendChild($StyleNode);
+}
+
 
 $i=0;
 foreach($rows as $row){
@@ -33,8 +56,8 @@ foreach($rows as $row){
   # Drag  Drop by Username at timestamp
   $placeNode->appendChild($descNode);
   
-  #$styleUrl = $dom->createElement('styleUrl', '#' . $row['type'] . 'Style');
-  #$placeNode->appendChild($styleUrl);
+  $styleUrl = $dom->createElement('styleUrl', '#' . $row[1] . 'Style');
+  $placeNode->appendChild($styleUrl);
 
   // Creates a Point element.
   $pointNode = $dom->createElement('Point');
