@@ -4,7 +4,7 @@ require_once 'fetchdata.php';
 
 $drops=dropset($table,$project);
 $colors=array("blue","grn","ltblu","pink","purple","red","wht","ylw");
-$i=count($colors);
+$n=count($colors);
 $i=0;
 $dropcol=array();
 
