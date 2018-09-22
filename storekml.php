@@ -40,7 +40,6 @@ foreach($rows as $row){
 
   // Creates a coordinates element and gives it the value of the lng and lat columns from the results.
   $coorStr = $row[6] . ','  . $row[5];
-  print($coorStr);
   $coorNode = $dom->createElement('coordinates', $coorStr);
   $pointNode->appendChild($coorNode);
 
