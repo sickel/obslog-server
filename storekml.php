@@ -1,5 +1,6 @@
 <?php
 // Creates the Document.
+require_once 'fetchdata.php';
 
 $rows=getobservations($table,$project);
 $now=date("_Ymd_His");
