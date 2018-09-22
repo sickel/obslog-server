@@ -27,9 +27,10 @@ foreach($rows as $row){
   // Creates an id attribute and assign it the value of id column.
   
   // Create name, and description elements and assigns them the values of the name and address columns from the results.
-  $nameNode = $dom->createElement('name',htmlentities($row[2])); # Timestamp
+  $nameNode = $dom->createElement('name',htmlentities($i)); # Timestamp
   $placeNode->appendChild($nameNode);
-  $descNode = $dom->createElement('description', $row[0].' '.$row[1]); # Drag  Drop
+  $descNode = $dom->createElement('description', $row[0].' '.$row[1])." by ".$row[3]. " at ".$row[2]); 
+  # Drag  Drop by Username at timestamp
   $placeNode->appendChild($descNode);
   
   #$styleUrl = $dom->createElement('styleUrl', '#' . $row['type'] . 'Style');
