@@ -31,6 +31,7 @@ foreach($rows as $row){
   $placeNode->appendChild($nameNode);
   $descNode = $dom->createElement('description', $row[1]);
   $placeNode->appendChild($descNode);
+  
   #$styleUrl = $dom->createElement('styleUrl', '#' . $row['type'] . 'Style');
   #$placeNode->appendChild($styleUrl);
 
