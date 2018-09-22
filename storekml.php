@@ -20,11 +20,12 @@ $i=0;
 foreach($rows as $row){
 
   $node = $dom->createElement('Placemark');
+  $node->setAttribute('id', 'placemark' . $i++);
+
   $placeNode = $docNode->appendChild($node);
 
   // Creates an id attribute and assign it the value of id column.
-  $placeNode->setAttribute('id', 'placemark' . $i++);
-
+  
   // Create name, and description elements and assigns them the values of the name and address columns from the results.
   $nameNode = $dom->createElement('name',htmlentities($row['drag']));
   $placeNode->appendChild($nameNode);
