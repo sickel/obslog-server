@@ -43,6 +43,10 @@ foreach($rows as $row){
 
 }
 
-echo $dom->saveXML();
+$kmlOutput = $dom->saveXML();
+header('Content-type: application/vnd.google-earth.kml+xml');
+echo $kmlOutput;
+
+
 
 ?>
