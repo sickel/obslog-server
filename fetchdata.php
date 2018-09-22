@@ -44,7 +44,7 @@ function htmlusertable($data){
 
 function dropset($table,$project){
   global $dbh;
-  $sql="select distinct drop from $table where project=?";
+  $sql="select distinct drp from $table where project=?";
   $sqlh=$dbh->prepare($sql);
   $sqlh->execute(array($project));
   return($sqlh->fetchAll(PDO::FETCH_NUM));
