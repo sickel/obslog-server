@@ -16,18 +16,19 @@ $parNode = $dom->appendChild($node);
 $dnode = $dom->createElement('Document');
 $docNode = $parNode->appendChild($dnode);
 
+$i=0;
 foreach($rows as $row){
 
   $node = $dom->createElement('Placemark');
   $placeNode = $docNode->appendChild($node);
 
   // Creates an id attribute and assign it the value of id column.
-  #$placeNode->setAttribute('id', 'placemark' . $row['id']);
+  $placeNode->setAttribute('id', 'placemark' . $i++]);
 
   // Create name, and description elements and assigns them the values of the name and address columns from the results.
-  $nameNode = $dom->createElement('drag',htmlentities($row['drag']));
+  $nameNode = $dom->createElement('name',htmlentities($row['drag']));
   $placeNode->appendChild($nameNode);
-  $descNode = $dom->createElement('drop', $row['drop']);
+  $descNode = $dom->createElement('description', $row['drop']);
   $placeNode->appendChild($descNode);
   #$styleUrl = $dom->createElement('styleUrl', '#' . $row['type'] . 'Style');
   #$placeNode->appendChild($styleUrl);
