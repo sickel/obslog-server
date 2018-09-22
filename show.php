@@ -1,7 +1,7 @@
 <?php
 
 require_once 'fetchdata.php';
-n=count($data);
+$n=count($data);
 ?>
 <form>
 Project: <input type="text" name="project" value="<?php echo($project)?>"/>
