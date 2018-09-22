@@ -1,6 +1,8 @@
 <?php
 
 require_once 'fetchdata.php';
+$data=useroverview($table,$project);
+
 $n=count($data);
 ?>
 <form>
@@ -15,7 +17,6 @@ print " <a href=\"storekml.php?project=$project\">Save kml</a></p>";
 print "<p>$n datapoints</p>";
 
 
-$data=useroverview($table,$project);
 htmlusertable($data);
 
 $data=getobservations($table,$project);
