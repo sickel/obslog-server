@@ -4,8 +4,8 @@ require_once 'fetchdata.php';
 require_once '../PHP_XLSXWriter/xlsxwriter.class.php';
 
 $rows=getobservations($table,$project);
-
-$filename = "$project.xlsx";
+$now=date("_Ymd_His");
+$filename = "$project$date.xlsx";
 header('Content-disposition: attachment; filename="'.XLSXWriter::sanitize_filename($filename).'"');
 header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 header('Content-Transfer-Encoding: binary');
